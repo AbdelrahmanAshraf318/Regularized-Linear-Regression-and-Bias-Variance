@@ -24,5 +24,9 @@ J = (sum((hypothesis - y) .^ 2) + lambda * sum(theta(2:end) .^ 2)) / (2 * m);
 % =========================================================================
 
 grad = grad(:);
+shift_theta = theta(2:end);
+theta_reg = [0;shift_theta];
+
+grad = (1/m) * (X' * (hypothesis - y) + lambda * theta_reg);
 
 end
